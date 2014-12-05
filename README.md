@@ -24,6 +24,8 @@ Config
 
 	- Set API_URL in ./Gruntfile.js
 
+	- Set api keys in ./server/providers.json
+
 
 Extras
 ======
