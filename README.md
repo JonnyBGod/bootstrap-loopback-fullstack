@@ -35,8 +35,10 @@ Edit all APP_ROOT_FOLDER, SEO4AJAX_API_KEY (some might be repeated, make sure yo
 Copy ./nginx.conf to /etc/nginx/sites-available/
 
 Alternatively, if you want ssl configuration do the above steps with nging_ssl.conf and place your certificate files in:
+ 
  - /opt/nginx/ssl_certs/server.pem
  - /opt/nginx/ssl_certs/server.key
  - /opt/nginx/ssl_certs/dhparam.pem
  - /opt/nginx/ssl_certs/godaddy_ssl_trusted_certificate.pem
- (this configuration will grant you A+ grade security)
+
+(this configuration will grant you A+ grade security)
