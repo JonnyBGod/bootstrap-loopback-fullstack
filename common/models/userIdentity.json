@@ -1,0 +1,15 @@
+{
+  "name": "userIdentity",
+  "base": "UserIdentity",
+  "validations": [],
+  "relations": {
+    "user": {
+      "type": "belongsTo",
+      "model": "user",
+      "foreignKey": "userId"
+    }
+  },
+  "acls": [],
+  "methods": [],
+  "properties": {}
+}

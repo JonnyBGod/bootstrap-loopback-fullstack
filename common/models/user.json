@@ -1,0 +1,143 @@
+{
+  "name": "user",
+  "base": "User",
+  "validations": [],
+  "properties": {
+    "photo": {
+      "type": "string"
+    }
+  },
+  "relations": {
+    "identities": {
+      "type": "hasMany",
+      "model": "userIdentity",
+      "foreignKey": "userId"
+    },
+    "credentials": {
+      "type": "hasMany",
+      "model": "userCredential",
+      "foreignKey": "userId"
+    }
+  },
+  "acls": [
+    {
+      "accessType": "*",
+      "permission": "ALLOW",
+      "principalType": "ROLE",
+      "principalId": "$owner"
+    },
+    {
+      "property": "changes",
+      "permission": "ALLOW",
+      "principalType": "ROLE",
+      "principalId": "$everyone"
+    },
+    {
+      "property": "diff",
+      "permission": "ALLOW",
+      "principalType": "ROLE",
+      "principalId": "$everyone"
+    },
+    {
+      "property": "createUpdates",
+      "permission": "ALLOW",
+      "principalType": "ROLE",
+      "principalId": "$everyone"
+    },
+    {
+      "property": "checkpoint",
+      "permission": "ALLOW",
+      "principalType": "ROLE",
+      "principalId": "$everyone"
+    },
+    {
+      "property": "currentCheckpoint",
+      "permission": "ALLOW",
+      "principalType": "ROLE",
+      "principalId": "$everyone"
+    },
+    {
+      "property": "bulkUpdate",
+      "permission": "ALLOW",
+      "principalType": "ROLE",
+      "principalId": "$everyone"
+    },
+    {
+      "property": "rectifyAllChanges",
+      "permission": "ALLOW",
+      "principalType": "ROLE",
+      "principalId": "$everyone"
+    },
+    {
+      "property": "rectifyChange",
+      "permission": "ALLOW",
+      "principalType": "ROLE",
+      "principalId": "$everyone"
+    },
+    {
+      "property": "find",
+      "permission": "ALLOW",
+      "principalType": "ROLE",
+      "principalId": "$everyone"
+    },
+    {
+      "property": "findOne",
+      "permission": "ALLOW",
+      "principalType": "ROLE",
+      "principalId": "$everyone"
+    },
+    {
+      "property": "findById",
+      "permission": "ALLOW",
+      "principalType": "ROLE",
+      "principalId": "$everyone"
+    },
+    {
+      "property": "create",
+      "permission": "ALLOW",
+      "principalType": "ROLE",
+      "principalId": "$everyone"
+    },
+    {
+      "property": "login",
+      "permission": "ALLOW",
+      "principalType": "ROLE",
+      "principalId": "$everyone"
+    },
+    {
+      "property": "logout",
+      "permission": "ALLOW",
+      "principalType": "ROLE",
+      "principalId": "$everyone"
+    },
+    {
+      "property": "confirm",
+      "permission": "ALLOW",
+      "principalType": "ROLE",
+      "principalId": "$everyone"
+    },
+    {
+      "property": "resetPassword",
+      "accessType": "*",
+      "permission": "ALLOW",
+      "principalType": "ROLE",
+      "principalId": "$everyone"
+    },
+    {
+      "property": "createAndLink",
+      "accessType": "*",
+      "permission": "ALLOW",
+      "principalType": "ROLE",
+      "principalId": "$everyone"
+    },
+    {
+      "property": "link",
+      "accessType": "*",
+      "permission": "ALLOW",
+      "principalType": "ROLE",
+      "principalId": "$everyone"
+    }
+  ],
+  "methods": [],
+  "properties": {}
+}

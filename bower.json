@@ -1,0 +1,26 @@
+{
+  "name": "PROJECT-NAME",
+  "version": "0.0.0",
+  "dependencies": {
+    "angular": "latest",
+    "json3": "latest",
+    "es5-shim": "latest",
+    "jquery": "latest",
+    "bootstrap-sass-official": "latest",
+    "angular-resource": "latest",
+    "angular-cookies": "latest",
+    "angular-sanitize": "latest",
+    "angular-animate": "latest",
+    "angular-touch": "latest",
+    "angular-ui-router": "latest",
+    "angulartics": "latest",
+    "fontawesome": "latest",
+    "socket.io-client": "latest",
+    "visibilityjs": "latest"
+  },
+  "devDependencies": {
+    "angular-mocks": "latest",
+    "angular-scenario": "latest"
+  },
+  "appPath": "app"
+}

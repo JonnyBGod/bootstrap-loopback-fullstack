@@ -1,0 +1,13 @@
+{
+  "db": {
+    "url": "mongodb://imoRoot:rv2sdec@ds057877.mongolab.com:57877/imoglobe",
+    "name": "db",
+    "connector": "loopback-connector-mongodb",
+    "defaultForType": "db"
+  },
+  "mail": {
+    "name": "mail",
+    "connector": "mail",
+    "defaultForType": "mail"
+  }
+}

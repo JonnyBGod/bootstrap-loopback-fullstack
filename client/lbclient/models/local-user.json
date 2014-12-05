@@ -1,0 +1,4 @@
+{
+  "name": "LocalUser",
+  "base": "user"
+}

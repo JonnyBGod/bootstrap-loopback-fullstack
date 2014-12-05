@@ -1,0 +1,11 @@
+{
+  "_meta": {
+    "sources": ["../../common/models", "./models"]
+  },
+  "LocalUser": {
+    "dataSource": "local"
+  },
+  "user": {
+    "dataSource": "remote"
+  }
+}

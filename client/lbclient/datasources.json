@@ -1,0 +1,9 @@
+{
+  "remote": {
+    "connector": "remote"
+  },
+  "local": {
+    "connector": "memory",
+    "localStorage": "chat-db"
+  }
+}

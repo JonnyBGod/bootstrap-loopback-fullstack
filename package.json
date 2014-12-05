@@ -1,0 +1,66 @@
+{
+  "name": "PROJECT-NAME",
+  "version": "0.0.0",
+  "main": "server/server.js",
+  "dependencies": {
+    "async": "latest",
+    "compression": "latest",
+    "cookies": "latest",
+    "errorhandler": "latest",
+    "loopback": "latest",
+    "loopback-boot": "latest",
+    "loopback-component-passport": "latest",
+    "loopback-component-push": "latest",
+    "loopback-connector-mongodb": "latest",
+    "loopback-datasource-juggler": "latest",
+    "newrelic": "latest",
+    "passport-facebook": "latest",
+    "passport-google-oauth": "latest",
+    "passport-twitter": "latest",
+    "redis": "latest",
+    "serve-favicon": "latest",
+    "socket.io": "latest"
+  },
+  "optionalDependencies": {
+    "loopback-explorer": "latest"
+  },
+  "devDependencies": {
+    "browserify": "latest",
+    "connect-livereload": "latest",
+    "grunt": "latest",
+    "grunt-angular-translate": "latest",
+    "grunt-autoprefixer": "latest",
+    "grunt-aws-sdk": "latest",
+    "grunt-concurrent": "latest",
+    "grunt-contrib-clean": "latest",
+    "grunt-contrib-compass": "latest",
+    "grunt-contrib-concat": "latest",
+    "grunt-contrib-copy": "latest",
+    "grunt-contrib-cssmin": "latest",
+    "grunt-contrib-htmlmin": "latest",
+    "grunt-contrib-imagemin": "latest",
+    "grunt-contrib-jshint": "latest",
+    "grunt-contrib-uglify": "latest",
+    "grunt-contrib-watch": "latest",
+    "grunt-docular": "latest",
+    "grunt-filerev": "latest",
+    "grunt-google-cdn": "latest",
+    "grunt-loopback-sdk-angular": "latest",
+    "grunt-newer": "latest",
+    "grunt-ng-annotate": "latest",
+    "grunt-nodemon": "latest",
+    "grunt-svgmin": "latest",
+    "grunt-usemin": "latest",
+    "grunt-wiredep": "latest",
+    "jshint-stylish": "latest",
+    "load-grunt-tasks": "latest",
+    "time-grunt": "latest"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "scripts": {
+    "postinstall": "node_modules/.bin/bower install",
+    "test": "grunt test"
+  }
+}

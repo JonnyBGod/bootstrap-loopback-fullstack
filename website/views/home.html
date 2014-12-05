@@ -1,0 +1,49 @@
+<div class="container">
+  <div class="header clearfix" ng-controller="headerCtrl">
+    <h3 class="text-muted pull-left"><a ng-href="/">CaaS</a>&nbsp;&nbsp;</h3>
+    <ul class="nav nav-pills navbar-left">
+      <li><a ng-href="/forwebsites" translate>For Websites</a></li>
+      <li><a ng-href="/theapp" translate>The App</a></li>
+    </ul>
+    <ul class="nav nav-pills navbar-right">
+      <li ng-if="!currentUser.name"><a ng-href="/signin" translate>Log In</a></li>
+      <li ng-if="currentUser.name" class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#">
+          <img data-ng-if="currentUser.photo" data-ng-src="{{currentUser.photo}}">
+          <i data-ng-if="!currentUser.photo" class="fa fa-user fa-lg"></i> <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu" role="menu">
+          <li><a><span translate>Welcome</span>, <strong>{{currentUser.name}}</strong></a></li>
+          <li class="divider"></li>
+          <li><a ng-href="/about" translate>About</a></li>
+          <li class="divider"></li>
+          <li><a ng-click="logout()" translate>Log out</a></li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="jumbotron">
+  <h1>'Allo, 'Allo!</h1>
+  <p class="lead">
+    <img src="images/yeoman.png" alt="I'm Yeoman"><br>
+    Always a pleasure scaffolding your apps.
+  </p>
+  <p><a class="btn btn-lg btn-success" ng-href="#">Splendid!<span class="glyphicon glyphicon-ok"></span></a></p>
+</div>
+
+<div class="row marketing">
+  <h4>HTML5 Boilerplate</h4>
+  <p>
+    HTML5 Boilerplate is a professional front-end template for building fast, robust, and adaptable web apps or sites.
+  </p>
+
+  <h4>Angular</h4>
+  <p>
+    AngularJS is a toolset for building the framework most suited to your application development.
+  </p>
+
+  <h4>Karma</h4>
+  <p>Spectacular Test Runner for JavaScript.</p>
+</div>
