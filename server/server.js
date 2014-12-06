@@ -1,9 +1,12 @@
-if (process.env.NODE_ENV != 'development') {
-    require('newrelic');
+if (process.env.NODE_ENV !== 'development') {
+  require('newrelic');
 }
 
 var loopback = require('loopback');
 var boot = require('loopback-boot');
+
+var path = require('path'),
+  fs = require("fs");
 
 var app = module.exports = loopback();
 
@@ -33,6 +36,11 @@ app.use(loopback.token({model: app.models.AccessToken}));
 app.use(loopback.json());
 app.use(loopback.urlencoded({ extended: false }));
 // -- Add your pre-processing middleware here --
+if (process.env.NODE_ENV === 'development') {
+  app.use(require('connect-livereload')({
+        port: 35729
+    }));
+}
 
 // boot scripts mount components like REST API
 boot(app, __dirname);
@@ -90,6 +98,16 @@ for(var s in config) {
 // passing the static middleware are hitting the file system
 // Example:
 //   app.use(loopback.static(path.resolve(__dirname', '../client')));
+
+if (process.env.NODE_ENV === 'development') {
+  app.use('/bower_components', loopback.static(path.resolve(__dirname, '../bower_components')));
+  app.use('/styles', loopback.static(path.resolve(__dirname, '../website/.tmp/styles')));
+  app.use('/', loopback.static(path.resolve(__dirname, '../website')));
+  app.use('/', loopback.static(path.resolve(__dirname, '../client')));
+  app.use('/', function(req, res) {
+    res.sendFile(path.resolve(__dirname, '../website/index.html'));
+  });
+}
 
 // Requests that get this far won't be handled
 // by any middleware. Convert them into a 404 error

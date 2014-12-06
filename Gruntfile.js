@@ -227,7 +227,7 @@ module.exports = function (grunt) {
         options: {
           input: 'server/server.js',
           output: 'client/lb-services.js',
-          apiUrl: 'API_URL'
+          apiUrl: 'http://localhost:3000/'
         }
       }
     },
@@ -401,6 +401,7 @@ module.exports = function (grunt) {
           logConcurrentOutput: true,
         },
         tasks: [
+          'compass',
           'nodemon:dev',
           'watch'
         ]

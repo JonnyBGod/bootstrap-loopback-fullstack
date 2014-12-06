@@ -1,6 +1,6 @@
 (function(window, angular, undefined) {'use strict';
 
-var urlBase = "https://labs.imoglobe.com/api";
+var urlBase = "API_URL";
 var authHeader = 'authorization';
 
 /**

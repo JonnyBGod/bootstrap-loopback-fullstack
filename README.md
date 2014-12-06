@@ -1,7 +1,7 @@
-bootstrap-loopback-fullstack
-============================
+RealityConnect-Hackathon
+========================
 
-Project bootstrap for loopback backend project
+Our project for the Koding #hackathon
 
 
 Installation

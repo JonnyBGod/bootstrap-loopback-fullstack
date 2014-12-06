@@ -17,7 +17,7 @@ angular.module('services', ['lbServices'])
           var self = this;
           self.currentUser = User.getCurrent(function(response) {
             // success
-            User.apps({id: self.currentUser.id}, 
+            /*User.apps({id: self.currentUser.id}, 
               function (res) {
                 self.currentUser.apps = res;
                 if (response.username) {
@@ -28,7 +28,7 @@ angular.module('services', ['lbServices'])
               },
               function () {
               }
-            ); 
+            );*/
           }, function(response) {
             console.log(response);
           });

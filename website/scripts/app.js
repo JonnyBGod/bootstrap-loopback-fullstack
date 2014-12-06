@@ -217,7 +217,6 @@ angular
 
       delete $cookies.userId;
       delete $cookies.access_token;
-
       AppAuth.ensureHasCurrentUser(User);
 
       Visibility.change(function (e, state) {
