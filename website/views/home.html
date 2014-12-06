@@ -1,10 +1,7 @@
 <div class="container">
   <div class="header clearfix" ng-controller="headerCtrl">
-    <h3 class="text-muted pull-left"><a ng-href="/">CaaS</a>&nbsp;&nbsp;</h3>
-    <ul class="nav nav-pills navbar-left">
-      <li><a ng-href="/forwebsites" translate>For Websites</a></li>
-      <li><a ng-href="/theapp" translate>The App</a></li>
-    </ul>
+    <h3 class="text-muted pull-left"><a ng-href="/">App</a>&nbsp;&nbsp;</h3>
+    
     <ul class="nav nav-pills navbar-right">
       <li ng-if="!currentUser.name"><a ng-href="/signin" translate>Log In</a></li>
       <li ng-if="currentUser.name" class="dropdown">
