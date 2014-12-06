@@ -17,18 +17,6 @@ angular.module('services', ['lbServices'])
           var self = this;
           self.currentUser = User.getCurrent(function(response) {
             // success
-            /*User.apps({id: self.currentUser.id}, 
-              function (res) {
-                self.currentUser.apps = res;
-                if (response.username) {
-                  $location.path('/signup');
-                } else {
-                  $rootScope.$broadcast('login');
-                }
-              },
-              function () {
-              }
-            );*/
           }, function(response) {
             console.log(response);
           });
