@@ -5,12 +5,10 @@
   "dependencies": {
     "async": "latest",
     "compression": "latest",
-    "cookies": "latest",
     "errorhandler": "latest",
     "loopback": "latest",
     "loopback-boot": "latest",
     "loopback-component-passport": "latest",
-    "loopback-component-push": "latest",
     "loopback-connector-mongodb": "latest",
     "loopback-datasource-juggler": "latest",
     "newrelic": "latest",

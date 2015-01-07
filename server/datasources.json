@@ -1,6 +1,6 @@
 {
   "db": {
-    "url": "mongodb://imoRoot:rv2sdec@ds057877.mongolab.com:57877/imoglobe",
+    "url": "mongodb://USER:PASSWORD@SERVER:PORT/DATABASE",
     "name": "db",
     "connector": "loopback-connector-mongodb",
     "defaultForType": "db"

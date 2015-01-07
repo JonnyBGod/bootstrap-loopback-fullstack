@@ -21,39 +21,45 @@ module.exports = function (grunt) {
 
     // Watches files for changes and runs tasks based on the changed files
     watch: {
-      bowerWebsite: {
+      bower: {
         files: ['bower.json'],
-        tasks: ['wiredep:website']
+        tasks: ['wiredep']
       },
       jsWebsite: {
-        files: ['website/scripts/{,*/}*.js'],
+        files: ['client/scripts/{,*/}*.js'],
         tasks: ['newer:jshint:website'],
         options: {
           livereload: {
-            port: 35729
+            port: 35729,
+            // key: grunt.file.read('server.key'),
+            // cert: grunt.file.read('server.pem'),
+            // ca: grunt.file.read('gd_bundle.crt')
           }
         }
       },
       jsTestWebsite: {
-        files: ['website/test/spec/{,*/}*.js'],
+        files: ['client/test/spec/{,*/}*.js'],
         tasks: ['newer:jshint:website', 'karma:website']
       },
       compassWebsite: {
-        files: ['website/styles/{,*/}*.{scss,sass}'],
+        files: ['client/styles/{,*/}*.{scss,sass}'],
         tasks: ['compass:website', 'autoprefixer:website']
       },
       lbclient: {
         files: [
-          'lbclient/models/*',
-          'lbclient/app*',
-          'lbclient/datasources*',
-          'lbclient/models*',
-          'lbclient/build.js'
+          'client/lbclient/models/*',
+          'client/lbclient/app*',
+          'client/lbclient/datasources*',
+          'client/lbclient/models*',
+          'client/lbclient/build.js'
         ],
         tasks: ['build-lbclient'],
         options: {
           livereload: {
-            port: 35729
+            port: 35729,
+            // key: grunt.file.read('server.key'),
+            // cert: grunt.file.read('server.pem'),
+            // ca: grunt.file.read('gd_bundle.crt')
           }
         }
       },
@@ -70,14 +76,17 @@ module.exports = function (grunt) {
       livereload: {
         options: {
           livereload: {
-            port: 35729
+            port: 35729,
+            // key: grunt.file.read('server.key'),
+            // cert: grunt.file.read('server.pem'),
+            // ca: grunt.file.read('gd_bundle.crt')
           }
         },
         files: [
-          'website/{,*/}*.html',
-          'website/.tmp/styles/{,*/}*.css',
-          'website/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
-          'lbclient/browser.bundle.js'
+          'client/{,*/}*.html',
+          'client/.tmp/styles/{,*/}*.css',
+          'client/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
+          'client/lbclient/browser.bundle.js'
         ]
       }
     },
@@ -91,7 +100,7 @@ module.exports = function (grunt) {
       website: {
         src: [
           'Gruntfile.js',
-          'website/scripts/{,*/}*.js'
+          'client/scripts/{,*/}*.js'
         ]
       },
       test: {
@@ -109,14 +118,13 @@ module.exports = function (grunt) {
           dot: true,
           src: [
             '.tmp',
-            'website/.tmp',
-            'client/website/{,*/}*',
-            '!client/website/.git*',
-            'lbclient/browser.bundle.js'
+            'client/.tmp',
+            'dist',
+            'client/lbclient/browser.bundle.js'
           ]
         }]
       },
-      server: ['website/.tmp']
+      server: ['client/.tmp']
     },
 
     // Add vendor prefixed styles
@@ -127,9 +135,9 @@ module.exports = function (grunt) {
       website: {
         files: [{
           expand: true,
-          cwd: 'website/.tmp/styles/',
+          cwd: 'client/.tmp/styles/',
           src: '{,*/}*.css',
-          dest: 'website/.tmp/styles/'
+          dest: 'client/.tmp/styles/'
         }]
       }
     },
@@ -137,13 +145,10 @@ module.exports = function (grunt) {
     // Automatically inject Bower components into the app
     wiredep: {
       options: {
-        cwd: ''
+        cwd: '.'
       },
       website: {
-        //cwd:'website',
-        bowerJson: './bower.json',
-        directory: './bower_components/',
-        src: ['/website/index.html'],
+        src: ['client/index.html'],
         ignorePath:  /\.\.\//,
         fileTypes: {
           html: {
@@ -154,39 +159,49 @@ module.exports = function (grunt) {
           }
         },
         exclude: [
-          '/bower_components/es5-shim/es5-shim.js',
-          '/bower_components/json3/lib/json3.js',
-          '/bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/affix.js',
-          '/bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/alert.js',
-          '/bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/button.js',
-          '/bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/carousel.js',
-          '/bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/collapse.js',
-          '/bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/tab.js',
-          '/bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/transition.js',
-          '/bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/scrollspy.js',
-          '/bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/modal.js',
-          '/bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/tooltip.js',
-          '/bower_components/bootstrap-sass-official/vendor/assets/javascripts/bootstrap/popover.js',
-          '/bower_components/angulartics/src/angulartics-adobe.js',
-          '/bower_components/angulartics/src/angulartics-chartbeat.js',
-          '/bower_components/angulartics/src/angulartics-flurry.js',
-          '/bower_components/angulartics/src/angulartics-ga-cordova.js',
-          '/bower_components/angulartics/src/angulartics-gtm.js',
-          '/bower_components/angulartics/src/angulartics-kissmetrics.js',
-          '/bower_components/angulartics/src/angulartics-mixpanel.js',
-          '/bower_components/angulartics/src/angulartics-piwik.js',
-          '/bower_components/angulartics/src/angulartics-scroll.js',
-          '/bower_components/angulartics/src/angulartics-segmentio.js',
-          '/bower_components/angulartics/src/angulartics-splunk.js',
-          '/bower_components/angulartics/src/angulartics-woopra.js',
-          '/bower_components/jquery-waypoints/waypoints.js'
+          'bower_components/es5-shim/es5-shim.js',
+          'bower_components/json3/lib/json3.js',
+          'bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/affix.js',
+          'bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/alert.js',
+          'bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/button.js',
+          'bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/carousel.js',
+          'bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/collapse.js',
+          'bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/tab.js',
+          'bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/transition.js',
+          'bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/scrollspy.js',
+          'bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/modal.js',
+          'bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/tooltip.js',
+          'bower_components/bootstrap-sass-official/assets/javascripts/bootstrap/popover.js',
+          'bower_components/angular-route/angular-route.js',
+          'bower_components/angulartics/src/angulartics-adobe.js',
+          'bower_components/angulartics/src/angulartics-chartbeat.js',
+          'bower_components/angulartics/src/angulartics-flurry.js',
+          'bower_components/angulartics/src/angulartics-ga-cordova.js',
+          'bower_components/angulartics/src/angulartics-gtm.js',
+          'bower_components/angulartics/src/angulartics-kissmetrics.js',
+          'bower_components/angulartics/src/angulartics-mixpanel.js',
+          'bower_components/angulartics/src/angulartics-piwik.js',
+          'bower_components/angulartics/src/angulartics-scroll.js',
+          'bower_components/angulartics/src/angulartics-segmentio.js',
+          'bower_components/angulartics/src/angulartics-splunk.js',
+          'bower_components/angulartics/src/angulartics-woopra.js',
+          'bower_components/angulartics/src/angulartics-cnzz.js',
+          'bower_components/angulartics/src/angulartics-marketo.js',
+          'bower_components/angulartics/src/angulartics-intercom.js',
+          'bower_components/jquery-waypoints/waypoints.js',
+          'bower_components/blueimp',
+          'bower_components/jquery-file-upload/',
+          'bower_components/moment/',
+          'bower_components/cryptojslib/',
+          'bower_components/imagesloaded/',
+          'bower_components/eventEmitter/',
+          'bower_components/eventie/',
+          'bower_components/angular-carousel/',
+          'bower_components/angular-modal-service/'
         ],
       },
       sassWebsite: {
-        //cwd:'website',
-        bowerJson: './bower.json',
-        directory: './bower_components/',
-        src: ['/website/styles/{,*/}*.{scss,sass}'],
+        src: ['client/styles/{,*/}*.{scss,sass}'],
         ignorePath: /(\.\.\/){1,2}bower_components\//
       }
     },
@@ -195,16 +210,16 @@ module.exports = function (grunt) {
     compass: {
       website: {
         options: {
-          sassDir: 'website/styles',
-          cssDir: 'website/.tmp/styles',
-          generatedImagesDir: 'website/.tmp/images/generated',
-          imagesDir: 'website/images',
-          javascriptsDir: 'website/scripts',
-          fontsDir: 'website/styles/fonts',
-          importPath: './bower_components',
-          httpImagesPath: 'website/images',
-          httpGeneratedImagesPath: 'website/images/generated',
-          httpFontsPath: 'website/styles/fonts',
+          sassDir: 'client/styles',
+          cssDir: 'client/.tmp/styles',
+          generatedImagesDir: 'client/.tmp/images/generated',
+          imagesDir: 'client/images',
+          javascriptsDir: 'client/scripts',
+          fontsDir: 'client/fonts',
+          importPath: 'bower_components',
+          httpImagesPath: 'images',
+          httpGeneratedImagesPath: 'client/images/generated',
+          httpFontsPath: 'fonts',
           relativeAssets: false,
           assetCacheBuster: false,
           raw: 'Sass::Script::Number.precision = 10\n'
@@ -227,7 +242,7 @@ module.exports = function (grunt) {
         options: {
           input: 'server/server.js',
           output: 'client/lb-services.js',
-          apiUrl: 'API_URL'
+          apiUrl: '/api'
         }
       }
     },
@@ -251,10 +266,10 @@ module.exports = function (grunt) {
     filerev: {
       website: {
         src: [
-          'client/website/scripts/{,*/}*.js',
-          'client/website/styles/{,*/}*.css',
-          'client/website/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
-          'client/website/styles/fonts/*'
+          'dist/scripts/{,*/}*.js',
+          'dist/styles/{,*/}*.css',
+          'dist/images/{,*/}*.{png,jpg,jpeg,gif,webp,svg}',
+          'dist/styles/fonts/*'
         ]
       }
     },
@@ -265,9 +280,9 @@ module.exports = function (grunt) {
     useminPrepare: {
       website: {
         options: {
-          dest: 'client/website'
+          dest: 'dist'
         },
-        src: ['website/index.html'],
+        src: ['client/index.html'],
       }
     },
 
@@ -275,27 +290,27 @@ module.exports = function (grunt) {
     usemin: {
       'website-html': {
         options: {
-          assetsDirs: ['client/website','client/website/images'],
+          assetsDirs: ['dist','dist/images'],
           type:'html'
         },
-        files: { src: ['client/website/{,*/}*.html'] }
+        files: { src: ['dist/*.html'] }
       },
       'website-css': {
         options: {
-          assetsDirs: ['client/website','client/website/images'],
+          assetsDirs: ['dist','dist/images'],
           type:'css'
         },
-        files: { src: ['client/website/styles/{,*/}*.css'] }
-      },
+        files: { src: ['dist/styles/{,*/}*.css'] }
+      }
     },
 
     imagemin: {
       dist: {
         files: [{
           expand: true,
-          cwd: 'website/images',
+          cwd: 'client/images',
           src: '{,*/}*.{png,jpg,jpeg,gif}',
-          dest: 'client/website/images'
+          dest: 'dist/images'
         }]
       }
     },
@@ -304,9 +319,9 @@ module.exports = function (grunt) {
       dist: {
         files: [{
           expand: true,
-          cwd: 'website/images',
+          cwd: 'client/images',
           src: '{,*/}*.svg',
-          dest: 'client/website/images'
+          dest: 'dist/images'
         }]
       }
     },
@@ -322,9 +337,9 @@ module.exports = function (grunt) {
         },
         files: [{
           expand: true,
-          cwd: 'client/website',
+          cwd: 'dist',
           src: ['*.html', 'views/{,*/}*.html'],
-          dest: 'client/website'
+          dest: 'dist'
         }]
       }
     },
@@ -345,16 +360,16 @@ module.exports = function (grunt) {
 
     i18nextract: {
       website: {
-        src: [ 'website/scripts/**/*.js', 'website/**/*.html' ],
+        src: [ 'client/scripts/**/*.js', 'client/*.html', 'client/views/{,*/}*.html' ],
         lang: ['en'],
-        dest: 'website/locales'
+        dest: 'client/locales'
       }
     },
 
     // Replace Google CDN references
     cdnify: {
       dist: {
-        html: ['client/website/*.html']
+        html: ['dist/*.html']
       }
     },
 
@@ -364,8 +379,8 @@ module.exports = function (grunt) {
         files: [{
           expand: true,
           dot: true,
-          cwd: 'website',
-          dest: 'client/website',
+          cwd: 'client',
+          dest: 'dist',
           src: [
             '*.{ico,png,txt}',
             '.htaccess',
@@ -376,20 +391,20 @@ module.exports = function (grunt) {
           ]
         }, {
           expand: true,
-          cwd: '.tmp/images',
-          dest: 'client/website/images',
+          cwd: 'client/.tmp/images',
+          dest: 'dist/images',
           src: ['generated/*']
         }, {
           expand: true,
-          cwd: 'website/locales/',
+          cwd: 'client/locales/',
           src: '**',
-          dest: 'client/website/locales/'
+          dest: 'dist/locales/'
         }]
       },
       styles: {
         expand: true,
-        cwd: 'website/styles',
-        dest: 'website/.tmp/styles/',
+        cwd: 'client/styles',
+        dest: 'client/.tmp/styles/',
         src: '{,*/}*.css'
       }
     },
@@ -401,7 +416,7 @@ module.exports = function (grunt) {
           logConcurrentOutput: true,
         },
         tasks: [
-          'compass',
+          //'compass',
           'nodemon:dev',
           'watch'
         ]
@@ -439,8 +454,8 @@ module.exports = function (grunt) {
           delayTime: 1,
           env: {
             NODE_ENV: 'development',
-            PORT: 3000,
-            PORT_SSL: 4000
+            PORT: 50447,
+            PORT_SSL: 50337
           },
           cwd: __dirname
         }
@@ -455,8 +470,8 @@ module.exports = function (grunt) {
           delayTime: 1,
           env: {
             NODE_ENV: 'production',
-            PORT: 3000,
-            PORT_SSL: 4000
+            PORT: 50447,
+            PORT_SSL: 50337
           },
           cwd: __dirname
         }
@@ -496,15 +511,16 @@ module.exports = function (grunt) {
   ]);
 
   grunt.registerTask('dev', [
-    'build-lbclient',
+    //'loopback_sdk_angular',
+    //'build-lbclient',
     'wiredep',
     'autoprefixer',
     'concurrent:nodemon_dev'
   ]);
 
   grunt.registerTask('prod', [
-    'build-lbclient',
-    'docular',
+    //'build-lbclient',
+    //'docular',
     'concurrent:nodemon_prod'
   ]);
 
@@ -513,7 +529,8 @@ module.exports = function (grunt) {
   ]);
 
   grunt.registerTask('build', [
-    'build-lbclient',
+    //'build-lbclient',
+    'loopback_sdk_angular',
     'buildClients'
   ]);
 };
